@@ -2,7 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to the #{title} Web Application
-  p Please Enter the Start Date:
-  select
-    option(value=1990) 1990
+  p Welcome to the #{title} Web Application.
+  p Input the following to receive a list of asteroids nearest the Earth.
+  <br />
+  form(action="/" method="post")
+    h3 Fill out the following to filter the search results:
+    p Start Date:
+    input(type="date" name="startDate")
+    <br />
+    <br />
+    p End Date:
+    input(type="date" name="endDate")
+    <br />
+    <br />
+    p Distance (in miles) to Earth?
+    p Less than or equal to: 
+    input(type="number" name="miles")
+    <br />
+    <br />
+    input(type="submit")
