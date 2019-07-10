@@ -65,10 +65,19 @@ function filterByDistance(req, res, next) { //filter for distance
     res.locals.asteroidList = asteroidList;
     next();
 }
+function outputSuccess(req, res, next) { //response
+    const {asteroidList} = res.locals;
+    res.json({asteroids: asteroidList})
+}
+function outputError(err, req, res, next) { //if any error happened, it goes straight to this middleware function
+    res.json(err);
+}
 
 module.exports = {
     clientFormat,
     validateDistance,
     httpsRequest,
     filterByDistance,
+    outputSuccess,
+    outputError,
 };

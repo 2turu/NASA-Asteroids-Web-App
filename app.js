@@ -22,14 +22,6 @@ var server = app.listen(process.env.PORT || 3000, function () {
     console.log('App is now running on port', port);
 });
 
-function _outputSuccess(req, res, next) { //response
-    const {asteroidList} = res.locals;
-    res.json({asteroids: asteroidList})
-}
-function _outputError(err, req, res, next) { //if any error happened, it goes straight to this middleware function
-    res.json(err);
-}
-
 //App Routes
 app.get('/',
     function(req, res, next) {
@@ -39,15 +31,15 @@ app.post('/',
     nasaApi.validateDistance,
     nasaApi.httpsRequest,
     nasaApi.filterByDistance,
-    _outputSuccess,
-    _outputError
+    nasaApi.outputSuccess,
+    nasaApi.outputError
     );
 app.post('/format',
     nasaApi.clientFormat,
     nasaApi.validateDistance,
     nasaApi.httpsRequest,
     nasaApi.filterByDistance,
-    _outputSuccess,
-    _outputError
+    nasaApi.outputSuccess,
+    nasaApi.outputError
     );
 module.exports = app;
