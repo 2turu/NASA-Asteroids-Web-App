@@ -3,21 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to the #{title} Web Application.
-  p Input the following to receive a list of asteroids nearest the Earth.
+  p Receive a list of asteroid names filtered by the following inputs.
   <br />
   form(action="/" method="post")
-    h3 Fill out the following to filter the search results:
-    p Start Date:
-    input(type="date" name="startDate")
-    <br />
-    <br />
-    p End Date:
-    input(type="date" name="endDate")
-    <br />
-    <br />
-    p Distance (in miles) to Earth?
-    p Less than or equal to: 
-    input(type="number" name="miles")
-    <br />
-    <br />
+    h3 Fill out the following to filter the results:
+    div(style="float: left;") Start Date: 
+      input(type="text" name="dateStart" required)
+      |  (YYYY-MM-DD)
+    <br /><br />
+    div(style="float: left;") End Date: 
+      input(type="text" name="dateEnd")
+      |  (YYYY-MM-DD) (defaults to 7 days after Start Date)
+    <br /><br />
+    div(style="float: left;") Within Distance from Earth: 
+      input(type="text" name="value" required)
+      |  miles
+    <br /><br />
     input(type="submit")
+    <br /><br />
