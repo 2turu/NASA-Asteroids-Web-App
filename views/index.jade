@@ -8,7 +8,7 @@ block content
   form(action="/" method="post")
     h3 Fill out the following to filter the results:
     div(style="float: left;") Start Date: 
-      input(type="text" name="dateStart" required)
+      input(type="text" name="dateStart")
       |  (YYYY-MM-DD)
     <br /><br />
     div(style="float: left;") End Date: 
@@ -16,7 +16,7 @@ block content
       |  (YYYY-MM-DD) (defaults to 7 days after Start Date)
     <br /><br />
     div(style="float: left;") Within Distance from Earth: 
-      input(type="text" name="value" required)
+      input(type="text" name="value")
       |  miles
     <br /><br />
     input(type="submit")
