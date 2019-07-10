@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var server = app.listen(process.env.PORT || 3000, function () {
+    var port = server.address().port;
+    console.log('App is now running on port', port);
+});
+
 //App Routes
 app.get('/',
     function(req, res, next) {
