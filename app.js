@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const nasaApi = require('./controllers/api');
 
-var app = express();
+const app = require('express')();
+const routes = require('./routes');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,24 +22,8 @@ var server = app.listen(process.env.PORT || 3000, function () {
     console.log('App is now running on port', port);
 });
 
-//App Routes
-app.get('/',
-    function(req, res, next) {
-        res.render('index', { title: 'NASA Asteroids' });
-    });
-app.post('/',
-    nasaApi.validateDistance,
-    nasaApi.httpsRequest,
-    nasaApi.filterByDistance,
-    nasaApi.outputSuccess,
-    nasaApi.outputError
-    );
-app.post('/format',
-    nasaApi.clientFormat,
-    nasaApi.validateDistance,
-    nasaApi.httpsRequest,
-    nasaApi.filterByDistance,
-    nasaApi.outputSuccess,
-    nasaApi.outputError
-    );
+//route setup
+app.use('/', routes);
+app.use('/format', routes);
+
 module.exports = app;
