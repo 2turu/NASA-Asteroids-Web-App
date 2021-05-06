@@ -14,7 +14,7 @@
     "https": "^1.0.0",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
